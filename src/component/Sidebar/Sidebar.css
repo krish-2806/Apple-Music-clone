@@ -1,0 +1,52 @@
+.sidebar{
+    width:250px;
+    height:100vh;
+    background:#161616;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:20px;
+}
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color: #ff375f;
+    font-size:32px;
+    margin-bottom:40px;
+}
+.nav-link{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:white;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
+    transition:.3s;
+}
+.sign-link{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:white;
+    background:#ff375f;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
+    transition:.3s;
+    margin-top: 260px;
+}
+.nav-link:hover,.sign-link:hover{
+    background:#2c2c2e;
+}
+
+.nav-link.active{
+    background:#ff375f;
+}
+
+.nav-link svg,.sign-link svg{
+    font-size:22px;
+}

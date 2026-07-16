@@ -1,0 +1,163 @@
+.player {
+    position: fixed;
+    bottom: 15px;
+    left: 270px;
+    right: 20px;
+    height: 82px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    border-radius: 50px;
+    background: rgba(35, 35, 35, .55);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow:
+        0 8px 35px rgba(0, 0, 0, .45),
+        inset 0 1px rgba(255, 255, 255, .05);
+    overflow: hidden;
+    z-index: 1000;
+}
+.player::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: #46d2ff;
+    left: 20%;
+    top: -100px;
+    filter: blur(120px);
+    opacity: .15;
+}
+.player::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: #ff3b5c;
+    right: 18%;
+    top: -100px;
+    filter: blur(120px);
+    opacity: .15;
+}
+.left-player {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 2;
+}
+.center-player {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    z-index: 2;
+}
+.song-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.song-details img {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+.song-text h3 {
+    color: white;
+    font-size: 16px;
+    margin: 0;
+}
+.song-text p {
+    color: #c0c0c0;
+    margin-top: 4px;
+    font-size: 13px;
+}
+.apple-logo {
+    color: white;
+    font-size: 38px;
+    opacity: .9;
+}
+.right-player {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    z-index: 2;
+}
+.icon {
+    color: #ff375f;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .3s;
+}
+.small-icon {
+    font-size: 17px;
+    opacity: .7;
+}
+.icon:hover {
+    color: #fa869d;
+    transform: scale(1.15);
+}
+.play-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+    font-size: 20px;
+    transition: .3s;
+}
+.play-btn:hover {
+    transform: scale(1.08);
+}
+.play-btn svg{
+    font-size: 22px;
+    opacity: 1;
+    visibility: visible;
+}
+.volume {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.volume svg {
+    color: white;
+}
+.volume input {
+    width: 120px;
+    accent-color: white;
+}
+@media(max-width:992px) {
+    .player {
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        bottom: 0;
+    }
+
+    .apple-logo {
+        display: none;
+    }
+}
+@media(max-width:768px) {
+    .song-text {
+        display: none;
+    }
+
+    .volume {
+        display: none;
+    }
+
+    .left-player {
+        gap: 12px;
+    }
+
+    .right-player {
+        gap: 15px;
+    }
+}
