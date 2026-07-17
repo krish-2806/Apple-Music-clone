@@ -1,72 +1,172 @@
 .section{
     margin:20px 0 40px;
-    margin-top: -50px;
+    margin-top:-50px;
 }
-.slider,.recent{
+
+/* ================= Slider ================= */
+
+.slider,
+.recent{
     display:flex;
     gap:20px;
     overflow-x:auto;
     scroll-behavior:smooth;
     padding-bottom:10px;
 }
-.slider::-webkit-scrollbar,.recent::-webkit-scrollbar{
+
+.slider::-webkit-scrollbar,
+.recent::-webkit-scrollbar{
     height:8px;
 }
+
 .slider img{
-    width:700px;
-    height:370px;
-    /* object-fit:cover; */
+    width:min(700px,90vw);
+    height:auto;
+    aspect-ratio:16/9;
     border-radius:20px;
-    /* flex-shrink:0; */
     cursor:pointer;
     transition:.3s;
     margin:10px;
+    flex-shrink:0;
 }
-.slider img:hover,.recent img:hover{
-    transform:scale(1.03);
-}
-.small{
-    display: flex;
-    margin: 2px;
-    background: #1c1c1e;
-    border-radius: 15px;
-    padding: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-    width:300px;
-}
-.small img{
-    width: 100px;
-    height: 70px;
-    border-radius: 10px;
-}
-.text{
-    padding-left: 20px;
-    padding-top: 10px;
-}
-.text p,.banner-info p{
-    color: rgb(188, 187, 186);
-    font-size: smaller;
-}
-.main-s{
-    display: grid;
-    grid-template-columns: repeat(3,310px);
-    padding-left: 30px;
-}
+
+.slider img:hover,
+.recent img:hover,
 .small:hover{
     transform:scale(1.03);
 }
-.recent{
-    padding-left: 30px;
+
+/* ================= Small Cards ================= */
+
+.main-s{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    padding:0 20px;
 }
+
+.small{
+    display:flex;
+    align-items:center;
+    background:#1c1c1e;
+    border-radius:15px;
+    padding:12px;
+    cursor:pointer;
+    transition:.3s;
+    width:100%;
+}
+
+.small img{
+    width:100px;
+    height:70px;
+    border-radius:10px;
+    object-fit:cover;
+    flex-shrink:0;
+}
+
+.text{
+    padding-left:20px;
+}
+
+.text h3{
+    font-size:16px;
+}
+
+.text p,
+.banner-info p{
+    color:rgb(188,187,186);
+    font-size:13px;
+}
+
+/* ================= Recent ================= */
+
+.recent{
+    padding:0 20px;
+}
+
 .recent img{
     width:300px;
+    max-width:85vw;
     height:200px;
     border-radius:10px;
     cursor:pointer;
     transition:.3s;
-    margin: 10px;
+    object-fit:cover;
+    flex-shrink:0;
 }
+
 .banner-info{
-    text-align: center;
+    text-align:center;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width:1200px){
+
+    .slider img{
+        width:600px;
+    }
+
+}
+
+@media (max-width:992px){
+
+    .slider img{
+        width:500px;
+    }
+
+    .main-s{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media (max-width:768px){
+
+    .slider img{
+        width:90vw;
+    }
+
+    .main-s{
+        grid-template-columns:1fr;
+        padding:0 10px;
+    }
+
+    .recent{
+        padding:0 10px;
+    }
+
+    .recent img{
+        width:260px;
+        height:170px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .slider img{
+        width:95vw;
+    }
+
+    .small{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .small img{
+        width:100%;
+        height:180px;
+        margin-bottom:10px;
+    }
+
+    .text{
+        padding-left:0;
+    }
+
+    .recent img{
+        width:220px;
+        height:150px;
+    }
+
 }
