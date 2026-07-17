@@ -47,7 +47,7 @@ const Signin = () => {
           </div>
 
           <button type="submit" onClick={HandleSubmit}>Login</button>
-          <p className="signup">Already have an account? <a href="/signin" onClick={HandleSignIn}>Log in</a></p>
+          <p className="signup">Already have an account? <a href="/signin" onClick={HandleSignIn}>Sign in</a></p>
         </div>
       </div>
     </div>

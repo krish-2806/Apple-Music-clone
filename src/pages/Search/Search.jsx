@@ -1,6 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 import { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
+import { searchSongs } from "../../services/musicApi";
 
 const songs = [
     {
@@ -93,6 +94,7 @@ const Search = () => {
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [apiSongs, setApiSongs] = useState([]);
     const { setCurrentSong, setPlaylist } = useOutletContext();
     const filteredSongs = songs.filter(
         (song) =>
@@ -100,22 +102,27 @@ const Search = () => {
             song.artist.toLowerCase().includes(search.toLowerCase())
     );
     const handleSearch = async () => {
+
         if (search.trim() === "") {
-            setResults([]);
+            setApiSongs([]);
             return;
         }
-        setLoading(true);
-        try {
-            const response = await fetch(`https://corsproxy.io/?https://api.deezer.com/search?q=${encodeURIComponent(search)}`);
 
-            const data = await response.json();
-            setResults(data.data || []);
-        } catch (error) {
-            console.log(error);
-            setResults([]);
-        } finally {
-            setLoading(false);
-        }
+        const result = await searchSongs(search);
+
+        const formattedSongs = result
+            .filter(song => song.previewUrl)
+            .map(song => ({
+                id: song.trackId,
+                title: song.trackName,
+                artist: song.artistName,
+                image: song.artworkUrl100,
+                preview: song.previewUrl,
+            }));
+
+        setApiSongs(formattedSongs);
+
+        setApiSongs(formattedSongs);
     };
 
     return (
@@ -128,7 +135,7 @@ const Search = () => {
                     className="search"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    onKeyUp={handleSearch}/>
+                    onKeyUp={handleSearch} />
 
                 <FaSearch className="search-icon" onClick={handleSearch} />
             </div>
@@ -136,8 +143,11 @@ const Search = () => {
             {search.trim() !== "" && (
                 <section>
                     <h2>Your Results</h2>
+
                     <div className="search-results">
-                        {filteredSongs.length > 0 ? (
+
+                        {/* Local Songs */}
+                        {filteredSongs.length > 0 &&
                             filteredSongs.map((song) => (
                                 <div
                                     className="result"
@@ -145,15 +155,39 @@ const Search = () => {
                                     onClick={() => {
                                         setPlaylist(filteredSongs);
                                         setCurrentSong(song);
-                                    }}>
+                                    }}
+                                >
                                     <div className="result-card">
                                         <img src={song.image} alt={song.title} />
                                         <h3>{song.title}</h3>
                                         <p>{song.artist}</p>
                                     </div>
                                 </div>
-                            ))
-                        ) : ( <h3>No songs found.</h3> )}
+                            ))}
+
+                        {/* API Songs */}
+                        {apiSongs.map((song) => (
+                            <div
+                                className="result"
+                                key={song.id}
+                                onClick={() => {
+                                    setPlaylist(apiSongs);
+                                    setCurrentSong(song);
+                                }}
+                            >
+                                <div className="result-card">
+                                    <img src={song.image} alt={song.title} />
+                                    <h3>{song.title}</h3>
+                                    <p>{song.artist}</p>
+                                </div>
+                            </div>
+                        ))}
+
+                        {/* No Songs */}
+                        {filteredSongs.length === 0 && apiSongs.length === 0 && (
+                            <h3>No Songs Found</h3>
+                        )}
+
                     </div>
                 </section>
             )}
