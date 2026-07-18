@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Lottie from "lottie-react";
+import link from "react-router-dom";
 import Robot from "../animations/Robot.json";
 import { useNavigate } from "react-router-dom";
 import './SignIn.css';
 
-const Signin = () => {
+const Signup = () => {
   const LottieComponent = Lottie.default || Lottie;
   const [formData, setFormData] = useState({
     username: "",
@@ -95,7 +96,7 @@ const validateField = (name, value) => {
 };
 
   const HandleSignIn = () => {
-    navigate("signin");
+    navigate("/signin");
   }
   return (
     <div className="signin-container">
@@ -118,11 +119,11 @@ const validateField = (name, value) => {
           </div>
 
           <button type="submit" onClick={HandleSubmit}>Create Account</button>
-          <p className="signup">Already have an account? <a href="/signin" onClick={HandleSignIn}>Sign in</a></p>
+          <p className="signup">Already have an account? <Link to="/signin" onClick={HandleSignIn}>Sign in</Link></p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Signin;
+export default Signup;

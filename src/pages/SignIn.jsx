@@ -1,6 +1,6 @@
 import {useState } from "react";
 import Lottie from "lottie-react";
-import link from "react-router-dom"
+import link from "react-router-dom";
 import Robot from "../animations/Robot.json";
 import { useNavigate } from "react-router-dom";
 import './SignIn.css';
