@@ -9,21 +9,90 @@ const Signin = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-  });
+});
+
+const [errors, setErrors] = useState({
+    username: "",
+    password: "",
+});
+
   const HandleChange = (e) => {
+    const { name, value } = e.target;
+
     setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+        ...formData,
+        [name]: value,
     });
-  }
+
+    validateField(name, value);
+};
+
+const validateField = (name, value) => {
+
+    let error = "";
+
+    if (name === "username") {
+
+        if (value.trim() === "") {
+            error = "Username is required";
+        }
+
+        else if (!/^[A-Za-z ]{3,}$/.test(value)) {
+            error = "Minimum 3 letters. Only alphabets allowed.";
+        }
+
+    }
+
+    if (name === "password") {
+
+        if (value.trim() === "") {
+            error = "Password is required";
+        }
+
+        else if (
+            !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#])[A-Za-z\d@$!%*?&^#]{8,}$/.test(value)
+        ) {
+            error =
+                "8+ chars, uppercase, lowercase, number & special character.";
+        }
+
+    }
+
+    setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+    }));
+
+};
+
   const navigate = useNavigate();
   const HandleSubmit = (e) => {
+
     e.preventDefault();
-    alert("Successfully Created...");
+
+    validateField("username", formData.username);
+    validateField("password", formData.password);
+
+    if (
+        formData.username.trim() === "" ||
+        formData.password.trim() === "" ||
+        errors.username ||
+        errors.password
+    ) {
+        return;
+    }
+
     localStorage.setItem("username", formData.username);
+
     localStorage.setItem("password", formData.password);
-    navigate("/");
-  }
+
+    localStorage.setItem("isLoggedIn", "false");
+
+    alert("Account Created Successfully");
+
+    navigate("/signin");
+
+};
 
   const HandleSignIn = () => {
     navigate("signin");
@@ -39,14 +108,16 @@ const Signin = () => {
           <p>Create your new account.</p>
 
           <div className="input-box">
-            <input type="text" name="username" placeholder="Your username" required onChange={HandleChange} />
+            <input type="text" name="username" placeholder="Your username" value={formData.username} onChange={HandleChange} />
+            <span className="error">{errors.username}</span>
           </div>
 
           <div className="input-box">
-            <input type="text" name="password" placeholder="Your password" required onChange={HandleChange} />
+            <input type="password" name="password" placeholder="Your password" value={formData.password} onChange={HandleChange} />
+            <span className="error">{errors.password}</span>
           </div>
 
-          <button type="submit" onClick={HandleSubmit}>Login</button>
+          <button type="submit" onClick={HandleSubmit}>Create Account</button>
           <p className="signup">Already have an account? <a href="/signin" onClick={HandleSignIn}>Sign in</a></p>
         </div>
       </div>

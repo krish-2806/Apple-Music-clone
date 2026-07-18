@@ -13,7 +13,7 @@ import {
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2 className="logo"><FaApple /> Music</h2>
+      <h2 className="logo"> BEATvybe</h2>
       <NavLink to="/" className="nav-link">
         <FaHome />
         <span>Home</span>

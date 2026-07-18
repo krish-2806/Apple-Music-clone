@@ -83,11 +83,11 @@
         align-items:center;
     }
     .logo{
-        justify-content:center;
         margin-bottom:30px;
-    }
-    .logo h2{
-        display:none;
+        margin-top: 10px;
+        display:block;
+        font-size:10px;
+        white-space:nowrap;
     }
     .nav-link span,
     .sign-link span{

@@ -85,3 +85,10 @@ button:hover {
   color: #4f46e5;
   text-decoration: none;
 }
+.error{
+    display:block;
+    color:#ff375f;
+    font-size:13px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
