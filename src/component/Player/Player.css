@@ -17,9 +17,8 @@
         0 8px 35px rgba(0,0,0,.45),
         inset 0 1px rgba(255,255,255,.05);
     overflow:hidden;
-    z-index:1000;
+    z-index:999;
 }
-
 .player::before{
     content:"";
     position:absolute;
@@ -31,7 +30,6 @@
     filter:blur(120px);
     opacity:.15;
 }
-
 .player::after{
     content:"";
     position:absolute;
@@ -43,7 +41,6 @@
     filter:blur(120px);
     opacity:.15;
 }
-
 .left-player,
 .center-player,
 .right-player{
@@ -51,66 +48,50 @@
     align-items:center;
     z-index:2;
 }
-
 .left-player{
     gap:18px;
 }
-
 .center-player{
     gap:30px;
 }
-
 .right-player{
     gap:25px;
 }
-
 .song-details{
     display:flex;
     align-items:center;
     gap:15px;
 }
-
 .song-details img{
     width:55px;
     height:55px;
     border-radius:12px;
     object-fit:cover;
 }
-
 .song-text h3{
     color:#fff;
     font-size:16px;
 }
-
 .song-text p{
     color:#c0c0c0;
     margin-top:4px;
     font-size:13px;
 }
-
 .apple-logo{
     color:white;
     font-size:38px;
     opacity:.9;
 }
-
 .icon{
     color:#ff375f;
     font-size:20px;
     cursor:pointer;
     transition:.3s;
 }
-
 .small-icon{
     font-size:17px;
     opacity:.7;
 }
-
-.icon:hover{
-    color:#fa869d;
-    transform:scale(1.15);
-}
-
 .play-btn{
     width:48px;
     height:48px;
@@ -120,108 +101,81 @@
     justify-content:center;
     align-items:center;
     cursor:pointer;
-    transition:.3s;
 }
-
-.play-btn:hover{
-    transform:scale(1.08);
-}
-
-.play-btn svg{
-    font-size:22px;
-}
-
 .volume{
     display:flex;
     align-items:center;
     gap:12px;
 }
-
-.volume svg{
-    color:white;
-}
-
 .volume input{
     width:120px;
     accent-color:white;
 }
-
-/* ========================= */
-/* Responsive */
-/* ========================= */
-
-@media (max-width:1200px){
-
-    .player{
-        left:250px;
-        right:15px;
-    }
-
-}
-
+/* Tablet */
 @media (max-width:992px){
-
     .player{
-        left:15px;
-        right:15px;
+        left:85px;
+        right:10px;
         bottom:10px;
-        border-radius:25px;
+        border-radius:20px;
+        padding:12px 15px;
     }
-
     .apple-logo{
         display:none;
     }
-
 }
-
+/* Mobile */
 @media (max-width:768px){
-
     .player{
-        padding:12px 15px;
+        left:80px;
+        right:8px;
+        bottom:8px;
+        min-height:70px;
+        padding:10px 12px;
+        border-radius:18px;
     }
-
-    .song-text{
-        display:none;
-    }
-
+    .song-text,
     .volume{
         display:none;
     }
-
     .left-player{
-        gap:12px;
+        gap:8px;
     }
-
     .center-player{
-        gap:15px;
+        gap:10px;
     }
-
     .right-player{
-        gap:15px;
+        gap:10px;
     }
-
-}
-
-@media (max-width:480px){
-
-    .player{
-        left:10px;
-        right:10px;
-        padding:10px;
-    }
-
     .song-details img{
         width:45px;
         height:45px;
     }
-
+    .icon{
+        font-size:18px;
+    }
     .play-btn{
         width:42px;
         height:42px;
     }
-
-    .icon{
-        font-size:18px;
+}
+/* Small Mobile */
+@media (max-width:480px){
+    .player{
+        left:78px;
+        right:6px;
+        bottom:6px;
+        padding:8px 10px;
     }
-
+    .song-details img{
+        width:40px;
+        height:40px;
+    }
+    .play-btn{
+        width:38px;
+        height:38px;
+    }
+    .icon{
+        font-size:16px;
+    }
 }
