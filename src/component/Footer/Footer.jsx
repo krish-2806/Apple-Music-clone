@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className="footer">
 
       <div className="footer-top">
-        <h2><FaApple /> Music</h2>
+        <h2> BEATvybe</h2>
         <p>
           Stream millions of songs, discover trending artists, and enjoy
           an immersive music experience anywhere, anytime.
@@ -65,7 +65,7 @@ const Footer = () => {
       <hr />
 
       <div className="footer-bottom">
-        <p>© 2026 Apple Music Clone. Designed & Developed by Krrish.</p>
+        <p>© 2026 BEATvybe. Designed & Developed by Krish Prajapati.</p>
       </div>
 
     </footer>

@@ -126,38 +126,102 @@
 }
 /* Mobile */
 @media (max-width:768px){
-    .player{
-        left:80px;
-        right:8px;
-        bottom:8px;
-        min-height:70px;
-        padding:10px 12px;
-        border-radius:18px;
-    }
-    .song-text,
-    .volume{
-        display:none;
-    }
-    .left-player{
-        gap:8px;
-    }
-    .center-player{
-        gap:10px;
-    }
-    .right-player{
-        gap:10px;
-    }
-    .song-details img{
-        width:45px;
-        height:45px;
-    }
-    .icon{
-        font-size:18px;
-    }
-    .play-btn{
-        width:42px;
-        height:42px;
-    }
+
+.player{
+    left:72px;
+    right:8px;
+    bottom:8px;
+
+    padding:12px;
+    border-radius:20px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:stretch;
+    gap:12px;
+
+    height:auto;
+}
+
+.left-player{
+    width:100%;
+    justify-content:center;
+    gap:18px;
+    order:2;
+}
+
+.center-player{
+    width:100%;
+    margin:0;
+    order:1;
+}
+
+.song-details{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.song-details img{
+    width:50px;
+    height:50px;
+    border-radius:10px;
+}
+
+.song-text{
+    flex:1;
+    min-width:0;
+}
+
+.song-text h3{
+    font-size:15px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.song-text p{
+    font-size:12px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.progress-container{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-top:8px;
+}
+
+.progress-container span{
+    width:28px;
+    font-size:10px;
+}
+
+.progress-bar{
+    flex:1;
+}
+
+.right-player{
+    display:none;
+}
+
+.apple-logo{
+    display:none;
+}
+
+.icon{
+    font-size:18px;
+}
+
+.play-btn{
+    width:42px;
+    height:42px;
+}
+
 }
 /* Small Mobile */
 @media (max-width:480px){
@@ -178,4 +242,29 @@
     .icon{
         font-size:16px;
     }
+}
+.song-text{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.progress-container{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:8px;
+}
+
+.progress-container span{
+    color:#bbb;
+    font-size:12px;
+    width:35px;
+}
+
+.progress-bar{
+    flex:1;
+    height:4px;
+    cursor:pointer;
+    accent-color:#ff375f;
 }

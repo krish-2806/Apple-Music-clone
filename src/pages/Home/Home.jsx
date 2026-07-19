@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { useOutletContext } from "react-router-dom";
+import logo from "../../assets/logoPhoto.jpeg";
 import "./Home.css";
 
 const recentlyPlayed = [
@@ -119,7 +120,7 @@ const Home = () => {
     <div className="home">
       <div className="hero">
         <div className="hero-content">
-          <h2>Apple Music</h2>
+          <h2><img src={logo} /> BEATvybe</h2>
           <p>100 Million Songs. Ad-Free.</p>
           <button>Listen Now</button>
         </div>

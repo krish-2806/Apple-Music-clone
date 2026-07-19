@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logoPhoto.jpeg";
 
 const Navbar = ({username, setUsername}) => {
-  // const [username, setUsername] = useState("");
   const [showMenu, setShowMenu] = useState(false);
 
   const navigate = useNavigate();

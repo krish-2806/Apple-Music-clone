@@ -19,6 +19,8 @@ const Player = ({ song, playlist, setCurrentSong }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [shuffle, setShuffle] = useState(false);
   const [volume, setVolume] = useState(100);
+  const [currentTime, setCurrentTime] = useState(0);
+const [duration, setDuration] = useState(0);
 
   if (!song) return null;
 
@@ -80,6 +82,23 @@ const Player = ({ song, playlist, setCurrentSong }) => {
       audioRef.current.volume = volume / 100;
     }
   }, [volume]);
+  useEffect(() => {
+  const audio = audioRef.current;
+  if (!audio) return;
+
+  const updateTime = () => {
+    setCurrentTime(audio.currentTime);
+    setDuration(audio.duration || 0);
+  };
+
+  audio.addEventListener("timeupdate", updateTime);
+  audio.addEventListener("loadedmetadata", updateTime);
+
+  return () => {
+    audio.removeEventListener("timeupdate", updateTime);
+    audio.removeEventListener("loadedmetadata", updateTime);
+  };
+}, []);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -98,6 +117,15 @@ const Player = ({ song, playlist, setCurrentSong }) => {
       audio.removeEventListener("ended", handleEnded);
     };
   }, [song]);
+
+  const formatTime = (time) => {
+  if (isNaN(time)) return "0:00";
+
+  const min = Math.floor(time / 60);
+  const sec = Math.floor(time % 60);
+
+  return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+};
   return (
     <div className="player">
       <div className="left-player">
@@ -140,15 +168,40 @@ const Player = ({ song, playlist, setCurrentSong }) => {
       </div>
 
       <div className="center-player">
-        <div className="song-details">
-          <img src={song.image} alt={song.title} />
-          <div className="song-text">
-            <h3>{song.title}</h3>
-            <p>{song.artist}</p>
-          </div>
-        </div>
-        <FaApple className="apple-logo" />
+
+  <div className="song-details">
+    <img src={song.image} alt={song.title} />
+
+    <div className="song-text">
+      <h3>{song.title}</h3>
+      <p>{song.artist}</p>
+
+      <div className="progress-container">
+
+        <span>{formatTime(currentTime)}</span>
+
+        <input
+          type="range"
+          className="progress-bar"
+          min="0"
+          max={duration}
+          value={currentTime}
+          onChange={(e) => {
+            audioRef.current.currentTime = e.target.value;
+            setCurrentTime(e.target.value);
+          }}
+        />
+
+        <span>{formatTime(duration)}</span>
+
       </div>
+
+    </div>
+  </div>
+
+  {/* <FaApple className="apple-logo" /> */}
+
+</div>
 
       <div className="right-player">
         <FaListUl className="icon" />
