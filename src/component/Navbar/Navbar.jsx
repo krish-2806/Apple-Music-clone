@@ -26,6 +26,7 @@ const Navbar = ({username, setUsername}) => {
 
     setUsername("");
     setShowMenu(false);
+    window.location.reload();
 
     navigate("/signin");
 };
