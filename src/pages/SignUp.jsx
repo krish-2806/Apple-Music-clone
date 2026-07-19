@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Lottie from "lottie-react";
-import link from "react-router-dom";
+import {Link} from "react-router-dom";
 import Robot from "../animations/Robot.json";
 import { useNavigate } from "react-router-dom";
 import './SignIn.css';
@@ -94,10 +94,6 @@ const validateField = (name, value) => {
     navigate("/signin");
 
 };
-
-  const HandleSignIn = () => {
-    navigate("/signin");
-  }
   return (
     <div className="signin-container">
       <div className="animation">
@@ -119,7 +115,7 @@ const validateField = (name, value) => {
           </div>
 
           <button type="submit" onClick={HandleSubmit}>Create Account</button>
-          <p className="signup">Already have an account? <Link to="/signin" onClick={HandleSignIn}>Sign in</Link></p>
+          <p className="signup">Already have an account? <Link to="/signin">Sign in</Link></p>
         </div>
       </div>
     </div>

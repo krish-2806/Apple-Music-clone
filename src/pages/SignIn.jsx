@@ -1,6 +1,6 @@
 import {useState } from "react";
 import Lottie from "lottie-react";
-import link from "react-router-dom";
+import {Link} from "react-router-dom";
 import Robot from "../animations/Robot.json";
 import { useNavigate } from "react-router-dom";
 import './SignIn.css';
@@ -108,10 +108,6 @@ const HandleSubmit = (e) => {
     navigate("/");
     window.location.reload();
 };
-
-  const HandleSignUp = ()=>{
-    navigate("/signup");
-  }
   return (
     <div className="signin-container">
       <div className="animation">
@@ -141,7 +137,7 @@ const HandleSubmit = (e) => {
           </div>
 
           <button type="submit" onClick={HandleSubmit}>Login</button>
-          <p className="signup">Don't have an account? <Link to="/signup" onClick={HandleSignUp}>Sign up</Link></p>
+          <p className="signup">Don't have an account? <Link to="/signup" >Sign up</Link></p>
         </div>
       </div>
     </div>
