@@ -9,11 +9,9 @@ import ScrollTop from './ScrollTop';
 const Layout = () => {
     const [currentSong, setCurrentSong] = useState(null);
     const [playlist, setPlaylist] = useState([]);
-
     const [username, setUsername] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-
     const authPage = location.pathname === "/signin" || location.pathname === "/signup";
 
     useEffect(() => {
@@ -27,15 +25,11 @@ const Layout = () => {
     return (
         <>
             <ScrollTop />
-
             <Navbar
                 username={username}
                 setUsername={setUsername}
-                isLoggedIn={isLoggedIn}
-            />
-
+                isLoggedIn={isLoggedIn}/>
             <Sidebar />
-
             <div className="main-content">
                 <Outlet
                     context={{
@@ -46,41 +40,28 @@ const Layout = () => {
                         username,
                         setUsername,
                         isLoggedIn,
-                    }}
-                />
+                    }}/>
             </div>
-
-            {/* Login Overlay */}
             {!isLoggedIn && !authPage && (
                 <div className="login-overlay">
                     <div className="login-card">
-
                         <h1>🔒 Please Login First</h1>
                         <p>Login to access Apple Music.</p>
-
                         <button onClick={() => navigate("/signin")}>
                             Login
                         </button>
-
                         <button
                             className="signup-btn"
-                            onClick={() => navigate("/signup")}
-                        >
-                            Create Account
-                        </button>
-
+                            onClick={() => navigate("/signup")}>Create Account</button>
                     </div>
                 </div>
             )}
-
             {currentSong && (
                 <Player
                     song={currentSong}
                     playlist={playlist}
-                    setCurrentSong={setCurrentSong}
-                />
+                    setCurrentSong={setCurrentSong}/>
             )}
-
             <Footer />
         </>
     );

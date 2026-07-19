@@ -51,11 +51,8 @@ const Signin = () => {
 
 const HandleSubmit = (e) => {
     e.preventDefault();
-
     const username = formData.username.trim();
     const password = formData.password;
-
-    // Username Validation
     if (username === "") {
         setErrors((prev) => ({
             ...prev,
@@ -72,7 +69,6 @@ const HandleSubmit = (e) => {
         return;
     }
 
-    // Password Validation
     if (password === "") {
         setErrors((prev) => ({
             ...prev,
@@ -81,9 +77,7 @@ const HandleSubmit = (e) => {
         return;
     }
 
-    if (
-        !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#])[A-Za-z\d@$!%*?&^#]{8,}$/.test(password)
-    ) {
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#])[A-Za-z\d@$!%*?&^#]{8,}$/.test(password)) {
         setErrors((prev) => ({
             ...prev,
             password:
@@ -92,14 +86,10 @@ const HandleSubmit = (e) => {
         return;
     }
 
-    // Check Local Storage
     const savedUsername = localStorage.getItem("username");
     const savedPassword = localStorage.getItem("password");
 
-    if (
-        username !== savedUsername ||
-        password !== savedPassword
-    ) {
+    if (username !== savedUsername || password !== savedPassword) {
         alert("Invalid Username or Password");
         return;
     }

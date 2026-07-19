@@ -143,10 +143,7 @@ const Search = () => {
             {search.trim() !== "" && (
                 <section>
                     <h2>Your Results</h2>
-
                     <div className="search-results">
-
-                        {/* Local Songs */}
                         {filteredSongs.length > 0 &&
                             filteredSongs.map((song) => (
                                 <div
@@ -155,8 +152,7 @@ const Search = () => {
                                     onClick={() => {
                                         setPlaylist(filteredSongs);
                                         setCurrentSong(song);
-                                    }}
-                                >
+                                    }}>
                                     <div className="result-card">
                                         <img src={song.image} alt={song.title} />
                                         <h3>{song.title}</h3>
@@ -164,8 +160,6 @@ const Search = () => {
                                     </div>
                                 </div>
                             ))}
-
-                        {/* API Songs */}
                         {apiSongs.map((song) => (
                             <div
                                 className="result"
@@ -173,8 +167,7 @@ const Search = () => {
                                 onClick={() => {
                                     setPlaylist(apiSongs);
                                     setCurrentSong(song);
-                                }}
-                            >
+                                }}>
                                 <div className="result-card">
                                     <img src={song.image} alt={song.title} />
                                     <h3>{song.title}</h3>
@@ -182,12 +175,9 @@ const Search = () => {
                                 </div>
                             </div>
                         ))}
-
-                        {/* No Songs */}
                         {filteredSongs.length === 0 && apiSongs.length === 0 && (
                             <h3>No Songs Found</h3>
                         )}
-
                     </div>
                 </section>
             )}

@@ -1,7 +1,6 @@
 import "./Footer.css";
 import { NavLink } from "react-router-dom";
 import {
-  FaApple,
   FaFacebook,
   FaInstagram,
   FaTwitter,
@@ -11,7 +10,6 @@ import {
 const Footer = () => {
   return (
     <footer className="footer">
-
       <div className="footer-top">
         <h2> BEATvybe</h2>
         <p>
@@ -26,15 +24,12 @@ const Footer = () => {
           <NavLink to="/" className="browse">
             Home
           </NavLink>
-
           <NavLink to="/search" className="browse">
             Search
           </NavLink>
-
           <NavLink to="/new" className="browse">
             New
           </NavLink>
-
           <NavLink to="/signin" className="browse">
             Sign In
           </NavLink>
@@ -50,24 +45,18 @@ const Footer = () => {
 
         <div>
           <h3>Follow Us</h3>
-
           <div className="social-icons">
             <FaFacebook />
             <FaInstagram />
             <FaTwitter />
             <FaYoutube />
           </div>
-
         </div>
-
       </div>
-
       <hr />
-
       <div className="footer-bottom">
         <p>© 2026 BEATvybe. Designed & Developed by Krish Prajapati.</p>
       </div>
-
     </footer>
   );
 };

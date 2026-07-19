@@ -7,7 +7,6 @@ import {
   FaMusic,
   FaSignInAlt,
   FaHeart,
-  FaApple,
 }from 'react-icons/fa';
 
 const Sidebar = () => {

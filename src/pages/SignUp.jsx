@@ -19,80 +19,52 @@ const [errors, setErrors] = useState({
 
   const HandleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData({
         ...formData,
         [name]: value,
     });
-
     validateField(name, value);
 };
 
 const validateField = (name, value) => {
-
     let error = "";
-
     if (name === "username") {
-
         if (value.trim() === "") {
             error = "Username is required";
         }
-
         else if (!/^[A-Za-z ]{3,}$/.test(value)) {
             error = "Minimum 3 letters. Only alphabets allowed.";
         }
-
     }
 
     if (name === "password") {
-
         if (value.trim() === "") {
             error = "Password is required";
         }
-
-        else if (
-            !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#])[A-Za-z\d@$!%*?&^#]{8,}$/.test(value)
-        ) {
-            error =
-                "8+ chars, uppercase, lowercase, number & special character.";
+        else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#])[A-Za-z\d@$!%*?&^#]{8,}$/.test(value)) {
+            error ="8+ chars, uppercase, lowercase, number & special character.";
         }
-
     }
 
     setErrors((prev) => ({
         ...prev,
         [name]: error,
     }));
-
 };
 
   const navigate = useNavigate();
   const HandleSubmit = (e) => {
-
     e.preventDefault();
-
     validateField("username", formData.username);
     validateField("password", formData.password);
-
-    if (
-        formData.username.trim() === "" ||
-        formData.password.trim() === "" ||
-        errors.username ||
-        errors.password
-    ) {
+    if ( formData.username.trim() === "" || formData.password.trim() === "" || errors.username || errors.password ) {
         return;
     }
-
     localStorage.setItem("username", formData.username);
-
     localStorage.setItem("password", formData.password);
-
     localStorage.setItem("isLoggedIn", "false");
-
     alert("Account Created Successfully");
-
     navigate("/signin");
-
 };
   return (
     <div className="signin-container">

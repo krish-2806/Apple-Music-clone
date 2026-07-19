@@ -293,7 +293,6 @@ const New = () => {
                         </div>
                     </div>
                 ))}
-
             </div>
             <br />
             <div className='recent'>
@@ -311,7 +310,6 @@ const New = () => {
                         </div>
                     </div>
                 ))}
-
             </div>
         </div>
     );
